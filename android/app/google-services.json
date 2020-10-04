@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1003257036804",
+    "firebase_url": "https://ibuy-mac-1.firebaseio.com",
+    "project_id": "ibuy-mac-1",
+    "storage_bucket": "ibuy-mac-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003257036804:android:583fbdbab960ee8a207551",
+        "android_client_info": {
+          "package_name": "com.example.ibuy_mac_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003257036804-pok8vtj1s4rh2lp43vj7vo2fku119t38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfF04-ubBa572scEaGDNxQZKhek-BtSg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003257036804-pok8vtj1s4rh2lp43vj7vo2fku119t38.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
