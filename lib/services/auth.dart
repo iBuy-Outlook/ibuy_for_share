@@ -65,4 +65,9 @@ class AuthService {
       return null;
     }
   }
-}
+
+  //send password reset email
+  Future sendPasswordResetEmail(String email) async {
+       return await _auth.sendPasswordResetEmail(email: email);
+    }
+  }

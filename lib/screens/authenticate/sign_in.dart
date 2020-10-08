@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ibuy_mac_1/screens/authenticate/reset_password.dart';
 import 'package:ibuy_mac_1/services/auth.dart';
 import 'package:ibuy_mac_1/shared/constants.dart';
 import 'package:ibuy_mac_1/shared/loading.dart';
@@ -98,15 +99,16 @@ class _SignInState extends State<SignIn> {
 
                   SizedBox(height: size.height*0.01),
                   Text(error, style: TextStyle(color: Colors.red, fontSize: 14.0),),
-                  Row(
-                    children: [
-                      FlatButton(
-                        child: Text('Forgot your password?',
-                          style: TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold)
-                        ),
-                        onPressed: () {},
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: FlatButton(
+                      child: Text('Forgot your password?',
+                        style: TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold)
                       ),
-                    ],
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/ResetPassword');
+                        },
+                    ),
                   ),
                   SizedBox(height: size.height*0.1),
 

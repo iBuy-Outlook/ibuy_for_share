@@ -4,6 +4,7 @@ import 'package:ibuy_mac_1/models/users_class.dart';
 import 'package:ibuy_mac_1/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:ibuy_mac_1/services/database.dart';
+import 'package:ibuy_mac_1/services/auth.dart';
 
 class ViewProfile extends StatelessWidget {
 
@@ -24,11 +25,17 @@ class ViewProfile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  child: UsersList(),
-                ),
+//                Container(
+//                  child: UsersList(),
+//                ),
                 SizedBox(height: size.height*.1),
                 Text('This is Profile View Page.', style: TextStyle(fontSize: 20, color: Colors.black54)),
+                RaisedButton(
+                  child: Text('Sign Out'),
+                  onPressed: () {
+                      return _auth.logOut();
+                    }
+                )
 
               ],
             ),

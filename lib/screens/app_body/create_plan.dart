@@ -9,10 +9,11 @@ class CreatePlan extends StatefulWidget {
 class _CreatePlanState extends State<CreatePlan> {
 
   final List<CBPlanRanges> _planRange = [
-    CBPlanRanges(600, 800, 5, 6),
+    CBPlanRanges(600, 1000, 5, 7),
     CBPlanRanges(400, 600, 4, 5),
     CBPlanRanges(200, 400, 3, 4),
     CBPlanRanges(100, 200, 2, 3),
+    CBPlanRanges(50, 100, 1, 2),
   ];
 
   @override
