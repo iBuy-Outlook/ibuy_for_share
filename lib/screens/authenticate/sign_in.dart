@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ibuy_mac_1/screens/authenticate/reset_password.dart';
 import 'package:ibuy_mac_1/services/auth.dart';
 import 'package:ibuy_mac_1/shared/constants.dart';
 import 'package:ibuy_mac_1/shared/loading.dart';
@@ -26,23 +25,25 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final _height = MediaQuery.of(context).size.height;
+    final _width = MediaQuery.of(context).size.width;
+
     return loading ? Loading() : SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Container(
-              height: size.height,
+              height: _height,
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: size.height*0.05),
+                  SizedBox(height: _height*0.03),
                   Image(
                     image: AssetImage('assets/ibuylogo_1.png'),
-                    height: size.height*0.15,
+                    height: _height*0.15,
                   ), //Image
                   Text('Cashback on Groceries',
                     style: TextStyle(fontSize: 24,
@@ -50,33 +51,39 @@ class _SignInState extends State<SignIn> {
                       color: Colors.green[800],
                     ),
                   ), //Text
-                  SizedBox(height: size.height*0.05),
+                  SizedBox(height: _height*0.05),
 
                   Form(
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
                         TextFormField(
+                          style: TextStyle(fontSize: 18),
                           decoration: textInputDecoration.copyWith(hintText: 'Email'),
                           validator: (val) => val.isEmpty ? 'Please enter a valid email' : null,
                           onChanged: (val) => setState(() => email = val),
                         ),
-                        SizedBox(height: size.height*0.01),
+                        SizedBox(height: _height*0.01),
                         TextFormField(
+                          style: TextStyle(fontSize: 18),
                           obscureText: true,
                           decoration: textInputDecoration.copyWith(hintText: 'Password'),
                           validator: (val) => val.length < 6 ? 'Please enter a valid password' : null,
                           onChanged: (val) => setState(() => password = val),
                         ),
-                        SizedBox(height: size.height*0.02),
+                        SizedBox(height: _height*0.02),
                         SizedBox(
-                          height: size.height*0.06,
                           width: double.infinity,
                           child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),),
                               color: Colors.amber,
-                              child: Text(
-                                'Sign In',
-                                style: TextStyle(color: Colors.black, fontSize: 16),
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Text(
+                                  'Sign In',
+                                  style: TextStyle(color: Colors.black, fontSize: 18),
+                                ),
                               ),
                               onPressed: () async {
                                 if(_formKey.currentState.validate()){
@@ -97,12 +104,12 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
 
-                  SizedBox(height: size.height*0.01),
+                  SizedBox(height: _height*0.01),
                   Text(error, style: TextStyle(color: Colors.red, fontSize: 14.0),),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: FlatButton(
-                      child: Text('Forgot your password?',
+                      child: Text('',
                         style: TextStyle(color: Colors.blue[700], fontWeight: FontWeight.bold)
                       ),
                       onPressed: () {
@@ -110,44 +117,30 @@ class _SignInState extends State<SignIn> {
                         },
                     ),
                   ),
-                  SizedBox(height: size.height*0.1),
+                  SizedBox(height: _height*0.05),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: Colors.black54,
-                          thickness: 1,
-                          indent: 50,
-                          endIndent: 20,
-                          height: size.height*0.03,
-                        ),
-                      ),
-                      Text('OR', style: TextStyle(color: Colors.black,),),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.black54,
-                          thickness: 1,
-                          indent: 20,
-                          endIndent: 50,
-                          height: size.height*0.03,
-                        ),
-                      ),
-                    ],
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      '    Don\'t have an account?',
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue[700],),
+                    ),
                   ),
-                  SizedBox(height: size.height*0.01),
+                  SizedBox(height: _height * 0.01),
                   SizedBox(
-                    height: size.height*0.06,
                     width: double.infinity,
                     child: RaisedButton(
-                      elevation: 0.5,
+                      shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),),
                       color: Colors.blueGrey[100],
-                      child: Text(
-                        'Create a new account',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          //fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'Create Account',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            //fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       onPressed: () {

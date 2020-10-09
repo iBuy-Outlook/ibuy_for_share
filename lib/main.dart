@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:ibuy_mac_1/screens/app_body/first_page.dart';
 import 'package:ibuy_mac_1/screens/app_body/view_profile.dart';
-import 'package:ibuy_mac_1/screens/authenticate/reset_password.dart';
 import 'package:ibuy_mac_1/screens/authenticate/sign_in.dart';
+import 'package:ibuy_mac_1/screens/authenticate/sign_up.dart';
 import 'package:ibuy_mac_1/shared/loading.dart';
 import 'package:provider/provider.dart';
 import 'package:ibuy_mac_1/models/custom_user.dart';
@@ -28,16 +29,27 @@ class MyApp extends StatelessWidget {
         //home: Wrapper(),
         initialRoute: '/wrapper',
 //        initialRoute: '/build_plan',
+//      initialRoute: '/SignUp',
+
         routes: {
           '/' : (context) => Loading(),
           '/wrapper' : (context) => Wrapper(),
           '/viewProfile' : (context) => ViewProfile(),
           '/build_plan' : (context) => BuildPlan(),
-          '/ResetPassword' : (context) => ResetPassword(),
           '/SignIn' : (context) => SignIn(),
+          '/SignUp' : (context) => SignUp(),
+          '/FirstPage' : (context) => FirstPage(),
         },
 
       ),
     );
+  }
+}
+
+
+class HomeController extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

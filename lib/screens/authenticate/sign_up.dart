@@ -25,23 +25,26 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
+    final _height = MediaQuery.of(context).size.height;
+    final _width = MediaQuery.of(context).size.width;
+
     return loading ? Loading() : SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Container(
-            height: size.height,
+            height: _height,
             width: double.infinity,
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: size.height*0.05),
+                SizedBox(height: _height * 0.03),
                 Image(
                   image: AssetImage('assets/ibuylogo_1.png'),
-                  height: size.height*0.15,
+                  height: _height*0.15,
                 ), //Image
                 Text('Cashback on Groceries',
                   style: TextStyle(fontSize: 24,
@@ -49,33 +52,39 @@ class _SignUpState extends State<SignUp> {
                     color: Colors.green[800],
                   ),
                 ), //Text
-                SizedBox(height: size.height*0.05),
+                SizedBox(height: _height*0.05),
 
                 Form(
                   key: _formKey,
                   child: Column(
                     children: [
                       TextFormField(
+                        style: TextStyle(fontSize: 18),
                         decoration: textInputDecoration.copyWith(hintText: 'Email'),
                         validator: (val) => val.isEmpty ? 'Please enter a valid email ID' : null,
                         onChanged: (val) => setState(() => email = val),
                       ),
-                      SizedBox(height: size.height*0.01),
+                      SizedBox(height: _height*0.01),
                       TextFormField(
+                        style: TextStyle(fontSize: 18),
                         obscureText: true,
                         decoration: textInputDecoration.copyWith(hintText: 'Password'),
                         validator: (val) => val.length < 6 ? 'Please select password with 6+ characters' : null,
                         onChanged: (val) => setState(() => password = val),
                       ),
-                      SizedBox(height: size.height*0.02),
+                      SizedBox(height: _height*0.02),
                       SizedBox(
-                        height: size.height*0.06,
                         width: double.infinity,
                         child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),),
                           color: Colors.amber,
-                          child: Text(
-                            'Create Account',
-                            style: TextStyle(color: Colors.black, fontSize: 16),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Text(
+                              'Create Account',
+                              style: TextStyle(color: Colors.black, fontSize: 18),
+                            ),
                           ),
                           onPressed: () async {
                             if (_formKey.currentState.validate()) {
@@ -96,7 +105,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
 
-                SizedBox(height: size.height*0.01),
+                SizedBox(height: _height*0.01),
                 Text(error, style: TextStyle(color: Colors.red, fontSize: 14.0),),
                 Row(
                   children: [
@@ -108,29 +117,30 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(height: size.height*0.11),
+                SizedBox(height: _height * 0.05),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      '  Already have an account?',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue[700],),
-                    ),
-                  ],
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '    Already have an account?',
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue[700],),
+                  ),
                 ),
-                SizedBox(height: size.height*0.01),
+                SizedBox(height: _height * 0.01),
                 SizedBox(
-                  height: size.height*0.06,
                   width: double.infinity,
                   child: RaisedButton(
-                    elevation: 0.5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),),
                     color: Colors.blueGrey[100],
-                    child: Text(
-                      'Log In',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        //fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'Log In',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          //fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     onPressed: () {
