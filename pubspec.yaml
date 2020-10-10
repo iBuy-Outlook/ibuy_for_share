@@ -44,11 +44,12 @@ dependencies:
   uuid: 2.2.2
   device_info: ^0.4.1+4
   google_fonts: ^1.1.0
-  firebase_admob: ^0.10.0+2
+#  firebase_admob: ^0.10.0-dev.1
   flare_flutter: ^2.0.3
   international_phone_input: ^1.0.4
-  flutter_launcher_icons: "^0.8.1"
+  flutter_launcher_icons: ^0.8.1
   date_range_picker: ^1.0.5
+  shared_preferences: ^0.5.12
 
 dev_dependencies:
   flutter_test:
