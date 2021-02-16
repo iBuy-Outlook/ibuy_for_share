@@ -14,6 +14,14 @@ class Program {
   final String maxCustomers;
   final String startDate;
   final String endDate;
+  final String storeCode;
+  final String storeAddressNameAndNumber;
+  final String storeAddressUnitNumber;
+  final String storeAddressCity;
+  final String storeAddressProvince;
+  final String storeAddressPostalCode;
+  final String storeLatitude;
+  final String storeLongitude;
         String docID;
 
   Program({
@@ -26,6 +34,14 @@ class Program {
     this.maxCustomers,
     this.startDate,
     this.endDate,
+    this.storeCode,
+    this.storeAddressNameAndNumber,
+    this.storeAddressUnitNumber,
+    this.storeAddressCity,
+    this.storeAddressProvince,
+    this.storeAddressPostalCode,
+    this.storeLatitude,
+    this.storeLongitude,
 });
 
   //formatting for upload to firebase when creating retailer Program
@@ -39,6 +55,14 @@ class Program {
     'maxCustomers': maxCustomers,
     'startDate': startDate,
     'endDate': endDate,
+    'storeCode': storeCode,
+    'storeAddressNameAndNumber': storeAddressNameAndNumber,
+    'storeAddressUnitNumber': storeAddressUnitNumber,
+    'storeAddressCity': storeAddressCity,
+    'storeAddressProvince': storeAddressProvince,
+    'storeAddressPostalCode': storeAddressPostalCode,
+    'storeLatitude': storeLatitude,
+    'storeLongitude': storeLongitude,
   };
 
   // creating a Programs object from Firebase snapshot
@@ -52,5 +76,13 @@ class Program {
       maxCustomers = snapshot['maxCustomers'],
       startDate = snapshot['startDate'],
       endDate = snapshot['endDate'],
+      storeCode = snapshot['storeCode'],
+      storeAddressNameAndNumber = snapshot['storeAddressNameAndNumber'],
+      storeAddressUnitNumber = snapshot['storeAddressUnitNumber'],
+      storeAddressCity = snapshot['storeAddressCity'],
+      storeAddressProvince = snapshot['storeAddressProvince'],
+      storeAddressPostalCode = snapshot['storeAddressPostalCode'],
+      storeLatitude = snapshot['storeLatitude'],
+      storeLongitude = snapshot['storeLongitude'],
       docID = snapshot.id;
 }

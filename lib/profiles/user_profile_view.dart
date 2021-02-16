@@ -10,7 +10,7 @@ class UserProfileView extends StatefulWidget {
 }
 
 class _UserProfileViewState extends State<UserProfileView> {
-  UserProfile userProfile = UserProfile('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 'na');
+  UserProfile userProfile = UserProfile('na', 'na', 'na', 'na', 'na', 'na', 'na', 'na', 0.0, 0.0, 0.0, 0.0, 'na', 'na');
 
   TextEditingController _userNameController = TextEditingController();
   TextEditingController _postalCodeController = TextEditingController();

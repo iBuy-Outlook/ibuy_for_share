@@ -8,6 +8,10 @@ class UserProfile {
   String state;
   String country;
   String postalCode;
+  double userLat;
+  double userLng;
+  double tempLat;
+  double tempLng;
   String cardNumberLastFour;
   String cardType;
 
@@ -20,6 +24,10 @@ class UserProfile {
     this.state,
     this.country,
     this.postalCode,
+    this.userLat,
+    this.userLng,
+    this.tempLat,
+    this.tempLng,
     this.cardNumberLastFour,
     this.cardType,
   );
@@ -33,6 +41,10 @@ class UserProfile {
     'state': state,
     'country': country,
     'postalCode': postalCode,
+    'userLat': userLat,
+    'userLng': userLng,
+    'tempLat': tempLat,
+    'tempLng': tempLng,
     'cardNumberLastFour': cardNumberLastFour,
     'cardType': cardType,
   };

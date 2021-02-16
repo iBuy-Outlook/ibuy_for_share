@@ -28,6 +28,15 @@ class DatabaseService {
         maxCustomers: docvar.data()['maxCustomers'] ?? '',
         startDate: docvar.data()['startDate'] ?? '',
         endDate: docvar.data()['endDate'] ?? '',
+        storeCode: docvar.data()['storeCode'] ?? '',
+        storeAddressNameAndNumber: docvar.data()['storeAddressNameAndNumber'] ?? '',
+        storeAddressUnitNumber: docvar.data()['storeAddressUnitNumber'] ?? '',
+        storeAddressCity: docvar.data()['storeAddressCity'] ?? '',
+        storeAddressProvince: docvar.data()['storeAddressProvince'] ?? '',
+        storeAddressPostalCode: docvar.data()['storeAddressPostalCode'] ?? '',
+        storeLatitude: docvar.data()['storeLatitude'] ?? '',
+        storeLongitude: docvar.data()['storeLongitude'] ?? '',
+
       );
     }).toList();
   }

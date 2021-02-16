@@ -1,6 +1,9 @@
 /*THIS LIST VIEW DISPLAY FOR THE HOME_VIEW PAGE*/
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:ibuy_mac_1/views/accept_plan.dart';
 import 'package:provider/provider.dart';
 import 'package:ibuy_mac_1/models/program.dart';
@@ -9,6 +12,7 @@ import 'package:ibuy_mac_1/models/user_plan.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ibuy_mac_1/fixed_functionalities.dart';
+import 'package:latlong/latlong.dart';
 
 class ProgramList extends StatelessWidget {
   final UserPlan userPlan;
@@ -32,16 +36,33 @@ class ProgramList extends StatelessWidget {
           .where((i) => (
           !i.retailerName.contains('Metro') &&
           i.regionalCode.contains(_postalCode.substring(0,3))
-      )).toList()
-      ;
-      print('      THESE ARE THE FIRST # LETTERS      ${_postalCode.substring(0,3)}');
+      )).toList();
 
     } else {
-      _programsNew = [Program(retailerName: 'Please provide Postal Code', spendRange: 'na', regionalCode: 'na', minSpend: 'na', maxCustomers: 'na', cashback: '', maxSpend: 'na',startDate: null, endDate: null)];
+      _programsNew = [
+        Program(
+          retailerName: 'Please provide Postal Code',
+          spendRange: 'na',
+          regionalCode: 'na',
+          minSpend: 'na',
+          maxCustomers: 'na',
+          cashback: '',
+          maxSpend: 'na',
+          startDate: null,
+          endDate: null,
+          storeCode: 'na',
+          storeAddressNameAndNumber: 'na',
+          storeAddressUnitNumber: 'na',
+          storeAddressCity: 'na',
+          storeAddressProvince: 'na',
+          storeAddressPostalCode: 'na',
+          storeLatitude: 'na',
+          storeLongitude: 'na',
+        )
+      ];
     }
 
     _listLength = _programsNew.length;
-    print('LIST LENGTH ------- $_listLength');
 
     return ListView.builder(
         itemCount: _listLength,
@@ -52,10 +73,6 @@ class ProgramList extends StatelessWidget {
   }
 
   programTile(BuildContext context, tileElements, userProfile) {
-//    DateTime _startDate = DateTime.now();
-//    Timestamp _startDaten = DateTime.now().toUtc().millisecondsSinceEpoch
-//    DateTime _endDate = DateTime.now().add(Duration(days: 30));
-
     Timestamp _startDate = Timestamp.fromDate(DateTime.now());
     Timestamp _endDate = Timestamp.fromDate(DateTime.now().add(Duration(days: 30)));
 
@@ -64,38 +81,52 @@ class ProgramList extends StatelessWidget {
       tag: _endDate,
       transitionOnUserGestures: true,
       child: Container(
-        padding: EdgeInsets.only(top: 8),
+        padding: EdgeInsets.only(top: 14),
         child: Card(
           color: secondLight,
-          margin: EdgeInsets.fromLTRB(20,6,20,0),
+          margin: EdgeInsets.only(left: 10, right: 10),
           child: InkWell(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  SizedBox(height: 50.h),
                   Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        AutoSizeText(tileElements.retailerName,
+                          maxLines: 1,
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.ssp),
+                        ),
+                        SizedBox(height: 5.h),
                         Row(
                           children: [
-                            AutoSizeText(tileElements.retailerName,
-                              maxLines: 2,
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.ssp),
+                            AutoSizeText(tileElements.storeAddressNameAndNumber,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: 15.ssp,
+                                color: textLight,
+                              ),
                             ),
-                          ],),
+                            AutoSizeText('   ', maxLines: 1, style: TextStyle(fontSize: 10.ssp, color: Colors.red),),
+                            AutoSizeText(
+                              (Geolocator.distanceBetween(
+                                    userProfile.userLat,
+                                    userProfile.userLng,
+                                    double.parse(tileElements.storeLatitude),
+                                    double.parse(tileElements.storeLongitude)
+                                )/1000).toStringAsFixed(2), maxLines: 1, style: TextStyle(fontSize: 10.ssp, color: Colors.red),),
+                            AutoSizeText(' km', maxLines: 1, style: TextStyle(fontSize: 10.ssp, color: Colors.red),),
+                          ],
+                        ),
                       ],
                     ),
                   ),
                   Column(
                       children: [
-                        Row(
-                            children: [
-                              AutoSizeText(tileElements.cashback,
-                                maxLines: 2,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.ssp),
-                              ),
-                            ]
+                        AutoSizeText(tileElements.cashback,
+                          maxLines: 2,
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.ssp),
                         ),
                       ]
                   ),

@@ -34,8 +34,7 @@ class MyApp extends StatelessWidget {
       auth: AuthService(),
       db: FirebaseFirestore.instance,
       child: ScreenUtilInit(
-        designSize: Size(392.7272727
-            , 807.2727273),
+        designSize: Size(392.7272727, 807.2727273),
         allowFontScaling: false,
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

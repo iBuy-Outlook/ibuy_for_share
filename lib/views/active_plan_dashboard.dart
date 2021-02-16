@@ -90,7 +90,7 @@ class ActivePlanDashboard extends StatelessWidget {
                                 decoration: BoxDecoration(
 //                                  border: Border.all(color: backLight),
                                   //borderRadius: BorderRadius.circular(3.r),
-                                  color: backSurface,
+                                  color: backDark,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -121,7 +121,7 @@ class ActivePlanDashboard extends StatelessWidget {
                                 decoration: BoxDecoration(
 //                                  border: Border.all(color: backLight),
                                   borderRadius: BorderRadius.circular(3.r),
-                                  color: backSurface,
+                                  color: backDark,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,

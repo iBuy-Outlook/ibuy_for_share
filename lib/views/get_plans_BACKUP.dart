@@ -12,7 +12,6 @@ import 'package:ibuy_mac_1/fixed_functionalities.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:geolocator/geolocator.dart';
 // import 'package:geocoder/geocoder.dart';
-// import 'package:location/location.dart';
 
 class GetPlans extends StatefulWidget {
   final UserPlan userPlan;
@@ -29,22 +28,18 @@ class _GetPlansState extends State<GetPlans> {
   Set<Marker> _markers = HashSet<Marker>();
   GoogleMapController _mapController;
 
-
-
   void _onMapCreated(GoogleMapController controller) {
     _mapController = controller;
 
     setState(() {
       _markers.add(Marker(
         markerId: MarkerId("0"),
-        icon: BitmapDescriptor.defaultMarkerWithHue(0.0),
-        position: LatLng(widget.userProfile.userLat, widget.userProfile.userLng),
-        // position: LatLng(widget.positionVar.coordinates.latitude,widget.positionVar.coordinates.longitude),
+        position: LatLng(43.650204, -79.903625),
         infoWindow: InfoWindow(
           title: "Georgetown",
           snippet: "It Rocks!!",
         ),
-      ),
+       ),
       );
     });
   }
@@ -63,12 +58,12 @@ class _GetPlansState extends State<GetPlans> {
             children: [
               Container(
                 color: Colors.blue,
-                height: 0.4.sw,
+                height: 1.0.sw,
                 width: 1.0.sw,
                 child: GoogleMap(
                   onMapCreated: _onMapCreated,
                   initialCameraPosition: CameraPosition(
-                    target: LatLng(widget.userProfile.userLat, widget.userProfile.userLng),
+                    target: LatLng(43.650204, -79.903625),
                     zoom: 13,
                   ),
                   markers: _markers,

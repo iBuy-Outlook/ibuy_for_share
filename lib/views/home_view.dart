@@ -15,8 +15,8 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //Initiate user plan
-    final newPlan = UserPlan('na', null, null, 0, 0, 0, 'na', 'na');
-    final userProfile = UserProfile('na', 'na','na','na','na','na','na','na','na','na');
+    final newPlan = UserPlan('na', null, null, 0, 0, 0, 'na', 'na'/*, 0.0, 0.0, 0.0, 0.0*/);
+    final userProfile = UserProfile('na', 'na','na','na','na','na','na','na', 0.0, 0.0, 0.0, 0.0, 'na','na');
 
     return Container(
       child: FutureBuilder(
@@ -60,6 +60,10 @@ class HomeView extends StatelessWidget {
       userProfile.state = result.data()['state'];
       userProfile.country = result.data()['country'];
       userProfile.postalCode = result.data()['postalCode'];
+      userProfile.userLat = result.data()['userLat'];
+      userProfile.userLng = result.data()['userLng'];
+      userProfile.tempLat = result.data()['tempLat'];
+      userProfile.tempLng = result.data()['tempLng'];
       userProfile.cardNumberLastFour = result.data()['cardNumberLastFour'];
       userProfile.cardType = result.data()['cardType'];
     });

@@ -10,6 +10,10 @@ class UserPlan {
   double cashback;
   String status;
   String postalCode;
+  // double userLat;
+  // double userLng;
+  // double currentLat;
+  // double currentLng;
   String id;
 
   UserPlan(
@@ -21,6 +25,10 @@ class UserPlan {
       this.cashback,
       this.status,
       this.postalCode,
+      // this.userLat,
+      // this.userLng,
+      // this.currentLat,
+      // this.currentLng,
       );
 
   //formatting for upload to firebase while creating a userPlan
@@ -33,6 +41,10 @@ class UserPlan {
     'cashback': cashback,
     'status': status,
     'postalCode': postalCode,
+    // 'userLat': userLat,
+    // 'userLng': userLng,
+    // 'currentLat': currentLat,
+    // 'currentLng': currentLng,
   };
 
   //creating a userPlan object from a firebase snapshot
@@ -45,5 +57,9 @@ class UserPlan {
         cashback = snapshot['cashback'],
         status = snapshot['status'],
         postalCode = snapshot['postalCode'],
+        // userLat = snapshot['userLat'],
+        // userLng = snapshot['userLng'],
+        // currentLat = snapshot['currentLat'],
+        // currentLng = snapshot['currentLng'],
         id = snapshot.id;
 }

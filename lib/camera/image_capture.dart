@@ -2,6 +2,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:io';
 
 class ImageCapture extends StatefulWidget {
@@ -52,38 +53,38 @@ class _ImageCaptureState extends State<ImageCapture> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+//    final height = MediaQuery.of(context).size.height;
+//    final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      bottomNavigationBar: SizedBox(height: height*0.1,
+      bottomNavigationBar: SizedBox(height: 0.1.sh,
         child: BottomAppBar(
           color: Colors.blueGrey,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SizedBox(
-                height: height*0.065,
-                width: width*0.4,
-                child: RaisedButton.icon(label: Text('Camera', style: TextStyle(fontSize: 16),),
+                height: 0.065.sh,
+                width: 0.4.sw,
+                child: RaisedButton.icon(label: Text('Camera', style: TextStyle(fontSize: 16.ssp),),
                   color: Colors.blueGrey[400],
                   splashColor: Colors.amber,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40.0),
+                      borderRadius: BorderRadius.circular(40.r),
                   ),
-                  icon: Icon(Icons.photo_camera, size: 30,),
+                  icon: Icon(Icons.photo_camera, size: 30.w,),
                   onPressed: () => _pickImage(ImageSource.camera),
                 ),
               ),
               SizedBox(
-                height: height*0.065,
-                width: width*0.4,
-                child: RaisedButton.icon(label: Text('Photos', style: TextStyle(fontSize: 16),),
+                height: 0.065.sh,
+                width: 0.4.sw,
+                child: RaisedButton.icon(label: Text('Photos', style: TextStyle(fontSize: 16.ssp),),
                   color: Colors.blueGrey[400],
                   splashColor: Colors.amber,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40.0),
+                    borderRadius: BorderRadius.circular(40.r),
                   ),
-                  icon: Icon(Icons.photo, size: 30,),
+                  icon: Icon(Icons.photo, size: 30.w,),
                   onPressed: () => _pickImage(ImageSource.gallery),
                 ),
               ),
@@ -92,7 +93,7 @@ class _ImageCaptureState extends State<ImageCapture> {
         ),
       ),
       body: Container(
-        width: width,
+        width: 1.0.sw,
         child: ListView(
           children: [
             if (_imageFile != null) ...[
@@ -102,15 +103,15 @@ class _ImageCaptureState extends State<ImageCapture> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(height: 60, width: 100,
+                  SizedBox(height: 60.h, width: 100.w,
                     child: FlatButton(
-                      child: Icon(Icons.crop, size: 30,),
+                      child: Icon(Icons.crop, size: 30.w,),
                       onPressed: _cropImage,
                     ),
                   ),
-                  SizedBox(height: 60, width: 100,
+                  SizedBox(height: 60.h, width: 100.w,
                     child: FlatButton(
-                      child: Icon(Icons.refresh, size: 30,),
+                      child: Icon(Icons.refresh, size: 30.w,),
                       onPressed: _clear,
                     ),
                   ),
@@ -165,7 +166,7 @@ class _UploaderState extends State<Uploader> {
             children: [
               if (_uploadTask.isComplete)
                 FlatButton(
-                  child: Text('Done', style: TextStyle(fontSize: 16),),
+                  child: Text('Done', style: TextStyle(fontSize: 16.ssp),),
                   onPressed: () {
                     Navigator.popAndPushNamed(context, '/home');
                   },
@@ -173,13 +174,13 @@ class _UploaderState extends State<Uploader> {
 
               if (_uploadTask.isPaused)
                 FlatButton(
-                  child: Icon(Icons.play_arrow, size: 30,),
+                  child: Icon(Icons.play_arrow, size: 30.w,),
                   onPressed: _uploadTask.resume,
               ),
 
               if (_uploadTask.isInProgress)
                 FlatButton(
-                  child: Icon(Icons.pause, size: 30,),
+                  child: Icon(Icons.pause, size: 30.w,),
                   onPressed: _uploadTask.pause,
               ),
 
@@ -199,7 +200,7 @@ class _UploaderState extends State<Uploader> {
 
     } else {
       return FlatButton(
-        child: Text("Save", style: TextStyle(fontSize: 16),),
+        child: Text("Save", style: TextStyle(fontSize: 16.ssp),),
         onPressed: _startUpload,
       );
     }
